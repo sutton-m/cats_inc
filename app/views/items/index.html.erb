@@ -1,0 +1,27 @@
+<h1>Listing items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.image %></td>
+        <td class="price"><%= format_as_price item.price %></td>
+        <td>In stock: <%= item.stock %></td>
+        <td><%= button_to 'Buy', purchases_path(purchase: {item_id: item.id}) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
